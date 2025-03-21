@@ -1,9 +1,9 @@
 "use client"
 import { createContext, useContext, useEffect, useState } from "react";
-import { TContextProvider } from "./contextType";
+import { resultContext, TContextProvider } from "./contextType";
 
 const ContextProvider = createContext({} as TContextProvider);
-
+// {result: ["correct", "wrong", "correct"], id: "2"}
 export const useGameContext = () => useContext(ContextProvider)
 
 export default function ContextProviderLayout({
@@ -12,9 +12,9 @@ export default function ContextProviderLayout({
   children: React.ReactNode;
 }) {  
 
-  const [result, setResult] = useState<{id:string, result:('wrong'|'correct'|'timeout')[]}[]>([]);
+  const [result, setResult] = useState<resultContext[]>([]);
 
-  const handleResult = (sentRes:{id:string, result:('wrong'|'correct'|'timeout')[]}) => {
+  const handleResult = (sentRes:resultContext) => {
     let tempResult = [...result,sentRes]
     setResult(tempResult)
   }

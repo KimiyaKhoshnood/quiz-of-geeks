@@ -1,4 +1,6 @@
+export type resultContext = {id:string, result:('wrong'|'correct'|'timeout')[]}
+
 export type TContextProvider = {
-  result: {id:string, result:('wrong'|'correct'|'timeout')[]}[];
-  handleResult: (result: {id:string, result:('wrong'|'correct'|'timeout')[]}) => void;
+  result: resultContext[];
+  handleResult: (result: resultContext) => void;
 };
